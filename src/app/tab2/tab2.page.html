@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 2
+      Batalhar
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,9 +9,24 @@
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">Tab 2</ion-title>
+      <ion-title size="large">Batalhar</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 2 page"></app-explore-container>
+  <!-- Pokémon Details Section -->
+  <div *ngIf="pokemon.name" class="pokemon-details">
+    <h1 [ngStyle]="pokemonNameStyle">{{ pokemon.name | uppercase }}</h1>
+    <h2 [ngStyle]="pokemonNameStyle">{{ pokemonComparisonResult }}</h2>
+    <img [src]="pokemon.front_default" alt="{{ pokemon.name }}">
+    <p>Habilidades: {{ pokemon.abilities }}</p>
+    <p>Altura: {{ pokemon.height }}</p>
+    <p>Peso: {{ pokemon.weight }}</p>
+  </div>
+
+  <!-- Floating Action Button -->
+  <ion-fab vertical="bottom" horizontal="center" slot="fixed">
+    <ion-fab-button (click)="carregarPokemonAleatorio()">
+      <ion-icon name="refresh"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
